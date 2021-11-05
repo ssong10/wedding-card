@@ -12,6 +12,7 @@ import wedding9 from 'assets/wedding9.jpg'
 import Header from './Header'
 import { ReactComponent as Full } from 'assets/fullscreen.svg'
 import { ReactComponent as Close } from 'assets/closeFullScreen.svg'
+import Swipe from './Common/Swipe'
 const IMGS = [
   {
     url: wedding1
@@ -44,7 +45,8 @@ const IMGS = [
 
 const Slides = () => {
   const [ fullScreen, setFullScreen ] = useState(false)
-  const showImg = useRef<HTMLDivElement>(null)
+  const showImg = useRef<any>(null)
+  const mainSlide = useRef(null)
   const [show, setShow] = useState(0)
   const [select, setSelect] = useState(0)
   useEffect(()=> {
@@ -71,9 +73,14 @@ const Slides = () => {
   }
   const requestFullScreen = () => {
     if (showImg.current) {
-      if (showImg.current.requestFullscreen) {
-        showImg.current.requestFullscreen();
-        setFullScreen(true)
+      const element = showImg.current
+      setFullScreen(true)
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if (element.webkitRequestFullScreen) {
+        element.webkitRequestFullScreen();
       }
     }
   }
@@ -88,7 +95,19 @@ const Slides = () => {
           show !== 0 && 
           <ShortPrev onClick={()=> setShow(show-1)} fullScreen={fullScreen} /> 
         }
-          <Img src={IMGS[show].url} alt="wedding" fullScreen={fullScreen}/>
+          <Swipe
+            callback={(num) => console.log(num)}
+          >
+            <MainSlider ref={mainSlide} index={show}>
+              {IMGS.map((img,idx) => 
+                <ImgContainer
+                key={idx}
+                >
+                  <Img src={img.url} alt="wedding" fullScreen={fullScreen}/>
+                </ImgContainer>
+              )}
+            </MainSlider>
+          </Swipe>
         {
           show !== IMGS.length-1 &&
           <ShortNext onClick={()=> setShow(show+1)} fullScreen={fullScreen}/>
@@ -113,7 +132,7 @@ const Slides = () => {
               onClick={()=>setShow(idx)}
               select={idx===show}
             >
-              <img height="100%" width="auto" src={img.url} alt="wedding" />
+              <img height="100%" width="80%" src={img.url} alt="wedding" />
               <Layout
                 select={idx===show}
               />
@@ -131,30 +150,37 @@ const Slides = () => {
 }
 const MainImgContainer = styled.div`
   position: relative;
-  margin: 2em 10%;
+  display:flex;
+  overflow: hidden;
+  white-space: nowrap;
+  &::-webkit-scrollbar {
+    display:none;
+  }
   &: hover > button {
     opacity: 1;
-  }
+  };
 `
 
 const Img = styled.img<{fullScreen:boolean}>`
   ${props => props.fullScreen ?
-    'height : 100vh;' :
-    'width: 30vw'
+    'height : 90vh;' :
+    'width: 60vw'
   }
 `
 const SlideContainer =  styled.div`
   position: relative;
   display:flex;
   height: 20vw;
-  overflow-y: hidden;
-  white-space: no-wrap;
+  overflow: hidden;
+  white-space: nowrap;
   &::-webkit-scrollbar {
     display:none;
   }
 `
 
 const FullScreenButton = styled.button`
+  opacity: 0;
+
   padding: 0;
   position:absolute;
   top: 5px;
@@ -171,7 +197,6 @@ const Thumb = styled.div<{select?:boolean}>`
   ${props => props.select && `
     opacity: 0.5}
   `}
-
 `
 
 const Layout = styled.div<{select?:boolean}>`
@@ -212,7 +237,7 @@ const Next = styled.button`
 const ShortPrev = styled(Prev)<{fullScreen:boolean}>`
   opacity: 0;
   top: 50%;
-  left: 20%;
+  left: 10%;
   height: 30px;
   line-height: 30px;
   ${props => props.fullScreen && `
@@ -222,7 +247,7 @@ const ShortPrev = styled(Prev)<{fullScreen:boolean}>`
 const ShortNext = styled(Next)<{fullScreen:boolean}>`
   opacity: 0;
   top: 50%;
-  right: 20%;
+  right: 10%;
   height: 30px;
   line-height: 30px;
   ${props => props.fullScreen && `
@@ -232,8 +257,19 @@ const ShortNext = styled(Next)<{fullScreen:boolean}>`
 const Slide = styled.div<{index:number}>`
   display:flex;
   position:relative;
-  list-style: none;
   left: ${props => -20 * props.index + 'vw'};
+  margin: 0;
+  padding-left:0px;
+  transition: left 1s;
+`
+const ImgContainer = styled.div`
+  width: 100vw;
+  margin:auto;
+`
+const MainSlider = styled.div<{index:number}>`
+  display:flex;
+  position:relative;
+  left: ${props => -100 * props.index + 'vw'};
   margin: 0;
   padding-left:0px;
   transition: left 1s;

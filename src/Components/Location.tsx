@@ -71,7 +71,7 @@ const Location = () => {
 
 const Map = styled.div`
   width: 90%;
-  height: 60vw;
+  height: 50vw;
   margin: auto;
 `
 const SearchMaps = styled.div`
