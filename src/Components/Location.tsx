@@ -1,6 +1,9 @@
 import React, { useEffect , useRef } from 'react'
 import styled from 'styled-components'
 import Header from './Header'
+import google from 'assets/google-map.png'
+import kakao from 'assets/kakao-map.png'
+import naver from 'assets/naver-map.png'
 
 declare global {
   interface Window {
@@ -12,7 +15,7 @@ const Location = () => {
   const mapRef = useRef(null)
   useEffect(()=> {
     const mapContainer = mapRef.current
-    const position = new window.kakao.maps.LatLng(36.3481,127.38355)
+    const position = new window.kakao.maps.LatLng(36.3480402821751,127.383551474267)
     let options = {
       center: position,
       level: 4
@@ -39,11 +42,56 @@ const Location = () => {
     <div>
       <Header title="Location"/>
       <Map ref={mapRef} id="map" />
+      <SearchMaps>
+        <SearchMap>
+          <a href="https://goo.gl/maps/6rVzcjkmGvZQd91X7">
+            <img src={google} alt="google-map" width="100%"/>
+          </a>
+        </SearchMap>
+        <SearchMap>
+          <a href="http://naver.me/xmrtjmxg">
+            <img src={naver} alt="naver-map" width="100%"/>
+          </a>
+        </SearchMap>
+        <SearchMap>
+          <a href="https://map.kakao.com/?itemId=1518140833">
+            <img src={kakao} alt="kakao-map" width="100%"/>
+          </a>
+        </SearchMap>
+      </SearchMaps>
+      <Content>
+        <Title>더오페라웨딩홀</Title>
+        대전 서구 둔산남로 50<br/>
+        (탄방동 587번지)<br/>
+        042.363.5000
+      </Content>
     </div>
   )
 }
+
 const Map = styled.div`
+  width: 90%;
+  height: 60vw;
+  margin: auto;
+`
+const SearchMaps = styled.div`
+  display: flex;
+  margin-top: 1em;
   width: 100%;
-  height: 60vw; 
+  justify-content:center;
+  gap: 10%;
+`
+const SearchMap = styled.div`
+  width: 60px;
+`
+
+const Content = styled.p`
+  font-size: 16px;
+  font-family: sans-serif, 'Gothic';
+`
+const Title = styled.h3`
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
 `
 export default Location

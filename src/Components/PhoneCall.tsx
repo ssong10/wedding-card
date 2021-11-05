@@ -18,7 +18,7 @@ const PhoneCall = () => {
       <CallBox>
         <CallContent>
           <b>신부</b>에게<br/>
-          전화  걸기
+          전화걸기
         </CallContent>
         <a href="tel:01023439382">
           <Call>
@@ -33,11 +33,11 @@ const PhoneCall = () => {
 const Container = styled.div`
   background-color: #eee;
   display:flex;
-  padding: 2em 0em;
+  padding: 1.5em 0em;
 `
 
 const CallBox = styled.div`
-  padding: 1em;
+  padding: 0.5em;
   width: 50%;
   &: last-child {
     border-left: 1px dashed #888;
@@ -47,6 +47,7 @@ const CallContent = styled.div`
   display:inline-block;
 `
 const Call =styled.div`
+  box-sizing:border-box;
   display:inline-block;
   padding-top: 14px; 
   border : 2px solid #999;

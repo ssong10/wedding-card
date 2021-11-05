@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Gap from './Common/Gap';
+import Header from './Header';
 
 const Account:React.FC = () => {
   const [groom, setGroom] = useState(false)
@@ -19,6 +20,8 @@ const Account:React.FC = () => {
   }
   return (
     <Container>
+      <Gap />
+      <Header title="마음 전하실 곳" />
       <ShowAccount onClick={toggleGroom}>
         신랑 측 계좌번호 보기
       </ShowAccount>

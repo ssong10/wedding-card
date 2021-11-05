@@ -4,7 +4,6 @@ const GlobalStyles = createGlobalStyle`
   body {
     margin:0;
     padding:0;
-    font-family: "나눔세리프" , "Noto Serif KR";
   }
   a, a:active, a:hover, a:visited {
     text-decoration: none;
