@@ -1,4 +1,5 @@
 import React from 'react';
+import Main from 'Components/Main';
 import Account from 'Components/Accout';
 import Gap from 'Components/Common/Gap';
 import Header from 'Components/Header';
@@ -9,13 +10,7 @@ import Location from 'Components/Location';
 const App = () => {
   return (
     <Center>
-      <Main>
-        <img
-          src="http://mwedding.net/upData/PL1212/PL1212_1634182648_11634182648"
-          alt="weddingMain"
-          width="100%"
-        />
-      </Main>
+      <Main />
       <Header title="모시는 글" />
       <Text>
         저희 결혼식에 초대합니다.<br/>
@@ -48,9 +43,6 @@ const Center = styled.div`
   text-align: center;
   font-size: 18px;
   min-height: 5000px;
-`
-const Main = styled.div`
-  width: 100%;
 `
 
 const Text = styled.div`

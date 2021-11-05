@@ -1,33 +1,45 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import wedding1 from 'assets/wedding1.jpg'
+import wedding2 from 'assets/wedding2.jpg'
+import wedding3 from 'assets/wedding3.jpg'
+import wedding4 from 'assets/wedding4.jpg'
+import wedding5 from 'assets/wedding5.jpg'
+import wedding6 from 'assets/wedding6.jpg'
+import wedding7 from 'assets/wedding7.jpg'
+import wedding8 from 'assets/wedding8.jpg'
+import wedding9 from 'assets/wedding9.jpg'
 
 const IMGS = [
   {
-    url:'http://mwedding.net/upData/PL1212/PL1212_1634182379_111634182379'
+    url: wedding1
   },
   {
-    url:'http://mwedding.net/upData/PL1212/PL1212_1634182379_121634182379'
+    url:wedding2
   },
   {
-    url:'http://mwedding.net/upData/PL1212/PL1212_1634182379_131634182379'
+    url:wedding3
   },
   {
-    url:'http://mwedding.net/upData/PL1212/PL1212_1634182379_141634182379'
+    url:wedding4
   },
   {
-    url:'http://mwedding.net/upData/PL1212/PL1212_1634182379_151634182379'
+    url:wedding5
   },
   {
-    url:'http://mwedding.net/upData/PL1212/PL1212_1634182379_161634182379'
+    url:wedding5
   },
   {
-    url:'http://mwedding.net/upData/PL1212/PL1212_1634182379_171634182379'
+    url:wedding6
   },
   {
-    url:'http://mwedding.net/upData/PL1212/PL1212_1634182379_181634182379'
+    url:wedding7
   },
   {
-    url:'http://mwedding.net/upData/PL1212/PL1212_1634182379_191634182379'
+    url:wedding8
+  },
+  {
+    url:wedding9
   },
 ]
 
