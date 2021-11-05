@@ -89,7 +89,8 @@ const Content = styled.p`
   font-size: 16px;
   font-family: sans-serif, 'Gothic';
 `
-const Title = styled.h3`
+const Title = styled.span`
+  font-size: 18px;
   margin: 0;
   padding: 0;
   font-weight: bold;
