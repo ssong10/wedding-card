@@ -2,11 +2,10 @@ import React from 'react';
 import Main from 'Components/Main';
 import Account from 'Components/Accout';
 import Content from 'Components/Content';
-import Header from 'Components/Header';
-import styled from 'styled-components'
 import PhoneCall from 'Components/PhoneCall';
 import Slides from 'Components/Slides';
 import Location from 'Components/Location';
+import styled from 'styled-components'
 
 const App = () => {
   return (
