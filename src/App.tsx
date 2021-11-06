@@ -6,12 +6,14 @@ import PhoneCall from 'Components/PhoneCall';
 import Slides from 'Components/Slides';
 import Location from 'Components/Location';
 import styled from 'styled-components'
+import WeddingDate from 'Components/WeddingDate';
 
 const App = () => {
   return (
     <Center>
       <Main />
       <Content />
+      <WeddingDate />
       <Account />
       <PhoneCall />
       <Slides />

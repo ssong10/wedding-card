@@ -41,6 +41,12 @@ const Location = () => {
   return (
     <div>
       <Header title="Location"/>
+      <Content>
+        <Title>더오페라웨딩홀</Title><br/>
+        대전 서구 둔산남로 50<br/>
+        (탄방동 587번지)<br/>
+        042.363.5000
+      </Content>
       <Map ref={mapRef} id="map" />
       <SearchMaps>
         <SearchMap>
@@ -59,12 +65,6 @@ const Location = () => {
           </a>
         </SearchMap>
       </SearchMaps>
-      <Content>
-        <Title>더오페라웨딩홀</Title>
-        대전 서구 둔산남로 50<br/>
-        (탄방동 587번지)<br/>
-        042.363.5000
-      </Content>
     </div>
   )
 }

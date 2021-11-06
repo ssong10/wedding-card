@@ -13,6 +13,8 @@ import Header from './Header'
 import { ReactComponent as Full } from 'assets/fullscreen.svg'
 import { ReactComponent as Close } from 'assets/closeFullScreen.svg'
 import Swipe from './Common/Swipe'
+import { useSwipeable } from 'react-swipeable'
+
 const IMGS = [
   {
     url: wedding1
@@ -44,9 +46,14 @@ const IMGS = [
 ]
 
 const Slides = () => {
+  const handlers = useSwipeable({
+    onSwipedRight: () => Swiper(show-1),
+    onSwipedLeft: () => Swiper(show+1),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true,
+  });
   const [ fullScreen, setFullScreen ] = useState(false)
   const showImg = useRef<any>(null)
-  const mainSlide = useRef(null)
   const [show, setShow] = useState(0)
   const [select, setSelect] = useState(0)
   useEffect(()=> {
@@ -59,6 +66,16 @@ const Slides = () => {
       }
     })
   },[])
+  const Swiper = (idx:number) => {
+    if (idx === -1) {
+      setShow(0)
+      return
+    }
+    if (idx === IMGS.length) {
+      setShow(IMGS.length -1)
+    }
+    setShow(idx)
+  }
   useEffect(()=> {
     if (document.fullscreenElement) {
       document.exitFullscreen()
@@ -88,26 +105,25 @@ const Slides = () => {
     setFullScreen(false)
   }
   return (
-    <div>
+    <Container>
       <Header title="Gallery" />
       <MainImgContainer ref={showImg}>
         {
           show !== 0 && 
           <ShortPrev onClick={()=> setShow(show-1)} fullScreen={fullScreen} /> 
         }
-          <Swipe
-            callback={(num) => console.log(num)}
+          <MainSlider 
+            index={show}
           >
-            <MainSlider ref={mainSlide} index={show}>
-              {IMGS.map((img,idx) => 
-                <ImgContainer
+            {IMGS.map((img,idx) => 
+              <ImgContainer
+                {...handlers}
                 key={idx}
-                >
-                  <Img src={img.url} alt="wedding" fullScreen={fullScreen}/>
-                </ImgContainer>
-              )}
-            </MainSlider>
-          </Swipe>
+              >
+                <Img src={img.url} alt="wedding" fullScreen={fullScreen}/>
+              </ImgContainer>
+            )}
+          </MainSlider>
         {
           show !== IMGS.length-1 &&
           <ShortNext onClick={()=> setShow(show+1)} fullScreen={fullScreen}/>
@@ -145,9 +161,12 @@ const Slides = () => {
           <Next onClick={scrollNext}/>
         }
       </SlideContainer>
-    </div>
+    </Container>
   )
 }
+const Container = styled.div`
+  margin-bottom: 5em;
+`
 const MainImgContainer = styled.div`
   position: relative;
   display:flex;
