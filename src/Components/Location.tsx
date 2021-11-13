@@ -72,6 +72,7 @@ const Location = () => {
 const Map = styled.div`
   width: 90%;
   height: 50vw;
+  min-height: 250px;
   margin: auto;
 `
 const SearchMaps = styled.div`
@@ -90,7 +91,7 @@ const Content = styled.p`
   font-family: sans-serif, 'Gothic';
 `
 const Title = styled.span`
-  font-size: 18px;
+  font-size: 24px;
   margin: 0;
   padding: 0;
   font-weight: bold;

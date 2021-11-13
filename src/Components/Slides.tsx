@@ -12,7 +12,6 @@ import wedding9 from 'assets/wedding9.jpg'
 import Header from './Header'
 import { ReactComponent as Full } from 'assets/fullscreen.svg'
 import { ReactComponent as Close } from 'assets/closeFullScreen.svg'
-import Swipe from './Common/Swipe'
 import { useSwipeable } from 'react-swipeable'
 
 const IMGS = [
@@ -227,7 +226,7 @@ const Layout = styled.div<{select?:boolean}>`
   ${props => props.select && 'background-color: rgb(0,0,0,0.4)'}
 `
 const Prev = styled.button`
-  width: 30px;
+  width: 40px;
   line-height: 20vw;
   left: 0;
   top: 0;
@@ -243,7 +242,7 @@ const Prev = styled.button`
 const Next = styled.button`
   top: 0;
   right: 0;
-  width: 30px;
+  width: 40px;
   line-height:20vw;
   position: absolute;
   background-color: rgba(0,0,0,0.5);
@@ -257,8 +256,8 @@ const ShortPrev = styled(Prev)<{fullScreen:boolean}>`
   opacity: 0;
   top: 50%;
   left: 10%;
-  height: 30px;
-  line-height: 30px;
+  height: 40px;
+  line-height: 40px;
   ${props => props.fullScreen && `
     font-size: 24px
   `}
@@ -267,8 +266,8 @@ const ShortNext = styled(Next)<{fullScreen:boolean}>`
   opacity: 0;
   top: 50%;
   right: 10%;
-  height: 30px;
-  line-height: 30px;
+  height: 40px;
+  line-height: 40px;
   ${props => props.fullScreen && `
     font-size: 24px
   `}

@@ -1,6 +1,5 @@
 import React from 'react'
 import propose from 'assets/propose.png'
-import propose2 from 'assets/propose2.png'
 
 import styled from 'styled-components'
 
@@ -11,7 +10,7 @@ const WeddingDate = () => {
   const result = Math.ceil(gap / (1000*60*60*24))
   return (
     <Container>
-      <img src={propose2} alt="propose" width="100%" />
+      <img src={propose} alt="propose" width="100%" />
       <Content>
         D - Day <br/>
         {result}

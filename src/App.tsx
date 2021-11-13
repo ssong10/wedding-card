@@ -25,7 +25,7 @@ const App = () => {
 const Center = styled.div`
   text-align: center;
   font-size: 18px;
-  min-height: 5000px;
+  margin-bottom: 100px;
 `
 
 
