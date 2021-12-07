@@ -42,7 +42,7 @@ const Location = () => {
     <div>
       <Header title="Location"/>
       <Content>
-        <Title>더오페라웨딩홀</Title><br/>
+        <Title>더오페라웨딩홀</Title>
         대전 서구 둔산남로 50<br/>
         (탄방동 587번지)<br/>
         042.363.5000
@@ -90,9 +90,10 @@ const Content = styled.p`
   font-size: 16px;
   font-family: sans-serif, 'Gothic';
 `
-const Title = styled.span`
+const Title = styled.p`
   font-size: 24px;
   margin: 0;
+  margin-bottom: 8px;
   padding: 0;
   font-weight: bold;
 `

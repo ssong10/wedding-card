@@ -13,10 +13,10 @@ const Account:React.FC = () => {
     alert(`${who} 측 계좌번호가 복사되었습니다.`)
   }
   const copyGroom = () => {
-    handleCopyClipBoard('신랑','농협 302-7749-2007-51')
+    handleCopyClipBoard('신랑','국민은행 478102-04-157028')
   }
   const copyBride = () => {
-    handleCopyClipBoard('신부', '농협 352-0646-7701-33')
+    handleCopyClipBoard('신부', ' 국민은행 92343938249')
   }
   return (
     <Container>
@@ -27,8 +27,8 @@ const Account:React.FC = () => {
       </ShowAccount>
       <AccountDetail show={groom}>
         <Gap />
-        (혼주) 박장보<br/>
-        농협 302-7749-2007-51
+        박경민<br/>
+        국민은행 478102-04-157028
         <Copy onClick={copyGroom}>복사</Copy>
       </AccountDetail>
       <Gap />
@@ -40,8 +40,8 @@ const Account:React.FC = () => {
       </ShowAccount>
       <AccountDetail show={bride}>
         <Gap />
-        (혼주) 이주삼<br/>
-        농협 352-0646-7701-33
+        이현진<br/>
+        국민은행 92343938249
         <Copy onClick={copyBride}>복사</Copy>
       </AccountDetail>
     </Container>
